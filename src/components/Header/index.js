@@ -10,13 +10,13 @@ export default function Header() {
     <Container>
       <Icon source={icon} />
       <TouchableOpacity>
-        <Text>Séries</Text>
+        <Text>TV Shows</Text>
       </TouchableOpacity>
       <TouchableOpacity>
-        <Text>Filmes</Text>
+        <Text>Movies</Text>
       </TouchableOpacity>
       <TouchableOpacity>
-        <Text>Minha lista</Text>
+        <Text>My List</Text>
       </TouchableOpacity>
     </Container>
   );

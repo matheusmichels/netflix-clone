@@ -3,7 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import Login from '~/screens/Login';
-import Movies from '~/screens/Movies';
+import Home from '~/screens/Home';
 import Profile from '~/screens/Profile';
 import Player from '~/screens/Player';
 
@@ -18,7 +18,7 @@ export default isSigned =>
           {
             Home: createBottomTabNavigator(
               {
-                Movies,
+                Home,
                 Profile,
               },
               {

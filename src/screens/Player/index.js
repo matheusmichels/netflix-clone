@@ -14,6 +14,7 @@ export default function Player({ navigation }) {
   const [currentPosition, setCurrentPosition] = useState(0);
   const [duration, setDuration] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [hidePlayButton, setHidePlayButton] = useState(false);
 
   function handleLoad({ duration: mediaDuration }) {
     setDuration(mediaDuration);
@@ -24,6 +25,8 @@ export default function Player({ navigation }) {
   }
 
   function handleChangePosition(position) {
+    if (hidePlayButton) setHidePlayButton(false);
+
     setCurrentPosition(position);
   }
 
@@ -39,12 +42,14 @@ export default function Player({ navigation }) {
         onLoad={handleLoad}
         onProgress={handleProgress}
         onSeek={({ currentTime: time }) => setCurrentTime(time)}
+        onEnd={() => setHidePlayButton(true)}
       />
 
       <MediaPlayer
         currentPosition={currentTime}
         duration={duration}
         paused={paused}
+        hidePlayButton={hidePlayButton}
         onBack={() => navigation.goBack()}
         onPause={pause => setPaused(pause)}
         onChangePosition={handleChangePosition}

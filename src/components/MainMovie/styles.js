@@ -39,7 +39,7 @@ export const WatchButton = styled(RectButton)`
 `;
 
 export const WatchWrapper = styled.TouchableOpacity`
-  padding: 5px;
+  padding: 5px 15px 5px 5px;
   flex-flow: row;
   align-items: center;
 `;

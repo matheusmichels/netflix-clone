@@ -18,10 +18,12 @@ export default function MediaPlayer({
   currentPosition,
   duration,
   paused,
+  hidePlayButton,
   onBack,
   onChangePosition,
   onPause,
 }) {
+  const [hidePlayer, setHidePlayer] = useState(false);
   const [time, setTime] = useState();
 
   useEffect(() => {
@@ -30,41 +32,51 @@ export default function MediaPlayer({
   }, [currentPosition]);
 
   return (
-    <Overlay>
-      <Container>
-        <Header>
-          <Button onPress={onBack}>
-            <Icon name="arrow-left-thick" size={30} color={colors.light} />
-          </Button>
-          <Text size={18}>Stranger Things</Text>
-          <Button>
-            <Icon name="information-outline" size={30} color={colors.light} />
-          </Button>
-        </Header>
+    <Overlay onPress={() => setHidePlayer(!hidePlayer)}>
+      {!hidePlayer && (
+        <Container hide={hidePlayer}>
+          <Header>
+            <Button onPress={onBack}>
+              <Icon name="arrow-left" size={30} color={colors.light} />
+            </Button>
+            <Text size={18}>Stranger Things</Text>
+            <Button>
+              <Icon name="information-outline" size={30} color={colors.light} />
+            </Button>
+          </Header>
 
-        <Button center onPress={() => onPause(!paused)}>
-          <Icon
-            name={paused ? 'play' : 'pause'}
-            size={60}
-            color={colors.light}
-          />
-        </Button>
+          <>
+            {!hidePlayButton && (
+              <Button
+                center
+                hide={hidePlayButton}
+                onPress={() => onPause(!paused)}
+              >
+                <Icon
+                  name={paused ? 'play' : 'pause'}
+                  size={60}
+                  color={colors.light}
+                />
+              </Button>
+            )}
+          </>
 
-        <Bar>
-          <PlayerSlider
-            step={1}
-            value={currentPosition || 0}
-            minimumValue={0}
-            maximumValue={duration}
-            onSlidingStart={() => onPause(true)}
-            onSlidingComplete={value => onChangePosition(value)}
-            thumbTintColor={colors.primary}
-            maximumTrackTintColor={colors.light}
-            minimumTrackTintColor={colors.primary}
-          />
-          <Text>{time}</Text>
-        </Bar>
-      </Container>
+          <Bar>
+            <PlayerSlider
+              step={1}
+              value={currentPosition || 0}
+              minimumValue={0}
+              maximumValue={duration}
+              onSlidingStart={() => onPause(true)}
+              onSlidingComplete={value => onChangePosition(value)}
+              thumbTintColor={colors.primary}
+              maximumTrackTintColor={colors.light}
+              minimumTrackTintColor={colors.primary}
+            />
+            <Text>{time}</Text>
+          </Bar>
+        </Container>
+      )}
     </Overlay>
   );
 }
@@ -73,6 +85,7 @@ MediaPlayer.propTypes = {
   currentPosition: PropTypes.number,
   duration: PropTypes.number,
   paused: PropTypes.bool,
+  hidePlayButton: PropTypes.bool,
   onBack: PropTypes.func,
   onChangePosition: PropTypes.func,
   onPause: PropTypes.func,

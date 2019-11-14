@@ -4,7 +4,7 @@ import { Header, TabIcon, MainMovie, MoviesList } from '~/components';
 
 import { Container, ScrollView } from './styles';
 
-export default function Movies() {
+export default function Home() {
   const movies = new Array(10);
   movies.fill(true);
 
@@ -14,14 +14,13 @@ export default function Movies() {
       <ScrollView>
         <MainMovie />
 
-        <MoviesList title="Populares na Netflix" movies={movies} />
-        <MoviesList title="Em alta" movies={movies} />
+        <MoviesList title="Popular on Netflix" movies={movies} />
+        <MoviesList title="Trending Now" movies={movies} />
       </ScrollView>
     </Container>
   );
 }
 
-Movies.navigationOptions = {
-  title: 'Início',
+Home.navigationOptions = {
   tabBarIcon: props => <TabIcon name="home-outline" {...props} />,
 };

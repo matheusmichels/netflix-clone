@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-import { KeyboardAvoidingView, Platform } from 'react-native';
+import {
+  Alert,
+  KeyboardAvoidingView,
+  TouchableOpacity,
+  Platform,
+  ScrollView,
+} from 'react-native';
 import { useDispatch } from 'react-redux';
 
 import { signIn } from '~/store/modules/auth/actions';
 
-import { Container, Form, Logo, Input, SendButton, Wave, Text } from './styles';
+import { Input } from '~/components';
+import { Container, Form, Logo, SendButton, Wave, Text } from './styles';
 
 import logo from '~/assets/images/logo.png';
 
@@ -14,31 +21,44 @@ export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+  function handleLogin() {
+    if (!email || !password) {
+      Alert.alert('Warning', 'Please, fill in email and password fields');
+      return;
+    }
+
+    dispatch(signIn(email, password));
+  }
+
   return (
     <Container>
       <KeyboardAvoidingView enabled={Platform.OS === 'ios'} behavior="padding">
-        <Form>
-          <Logo source={logo} />
+        <ScrollView>
+          <Form>
+            <Logo source={logo} />
 
-          <Input
-            placeholder="E-mail ou número de telefone"
-            onChangeText={text => setEmail(text)}
-            keyboardType="email-address"
-          />
-          <Input
-            placeholder="Senha"
-            onChangeText={text => setPassword(text)}
-            secureTextEntry
-          />
+            <Input
+              placeholder="Email or phone number"
+              onChangeText={text => setEmail(text)}
+              keyboardType="email-address"
+            />
+            <Input
+              placeholder="Password"
+              onChangeText={text => setPassword(text)}
+              secureTextEntry
+            />
 
-          <SendButton onPress={() => dispatch(signIn(email, password))}>
-            <Wave>
-              <Text size={18}>Entrar</Text>
-            </Wave>
-          </SendButton>
+            <SendButton onPress={handleLogin}>
+              <Wave>
+                <Text size={18}>Sign In</Text>
+              </Wave>
+            </SendButton>
 
-          <Text>Novo por aqui? Inscreva-se agora</Text>
-        </Form>
+            <TouchableOpacity>
+              <Text>New to Netflix? Sign up now.</Text>
+            </TouchableOpacity>
+          </Form>
+        </ScrollView>
       </KeyboardAvoidingView>
     </Container>
   );

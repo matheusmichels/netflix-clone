@@ -1,8 +1,8 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 
-import { withNavigation } from 'react-navigation';
 import { Container, Title, ScrollView, Cover } from './styles';
 
 import strangerThings from '~/assets/images/movies/strangerthings.jpg';

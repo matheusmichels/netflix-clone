@@ -24,23 +24,22 @@ function MainMovie({ navigation }) {
       <Banner source={strangerThings} />
 
       <Genres>
-        <Text>Suspenses de ação • </Text>
-        <Text>Ação e aventura</Text>
+        <Text>Thriller • Action • Horror</Text>
       </Genres>
 
       <BottomBar>
         <ActionButton>
           <Icon name="plus" size={25} color={colors.light} />
           <Text color={colors.grey} size={12}>
-            Minha lista
+            My List
           </Text>
         </ActionButton>
 
         <WatchButton>
           <WatchWrapper onPress={() => navigation.navigate('Player')}>
             <Icon name="play" size={25} />
-            <Text color={colors.dark} size={16} bold>
-              Assistir
+            <Text color={colors.dark} size={17} bold>
+              Play
             </Text>
           </WatchWrapper>
         </WatchButton>
@@ -48,7 +47,7 @@ function MainMovie({ navigation }) {
         <ActionButton>
           <Icon name="information-outline" size={25} color={colors.light} />
           <Text color={colors.grey} size={12}>
-            Saiba mais
+            Info
           </Text>
         </ActionButton>
       </BottomBar>
