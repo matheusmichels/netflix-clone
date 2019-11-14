@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 
 import { Container, Icon, Text } from './styles';
 
-import icon from '~/assets/icon.png';
+import icon from '~/assets/images/icon.png';
 
 export default function Header() {
   return (
@@ -16,7 +16,7 @@ export default function Header() {
         <Text>Filmes</Text>
       </TouchableOpacity>
       <TouchableOpacity>
-        <Text>Minha Lista</Text>
+        <Text>Minha lista</Text>
       </TouchableOpacity>
     </Container>
   );

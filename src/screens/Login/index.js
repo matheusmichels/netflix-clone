@@ -6,7 +6,7 @@ import { signIn } from '~/store/modules/auth/actions';
 
 import { Container, Form, Logo, Input, SendButton, Wave, Text } from './styles';
 
-import logo from '~/assets/logo.png';
+import logo from '~/assets/images/logo.png';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -19,11 +19,17 @@ export default function Login() {
       <KeyboardAvoidingView enabled={Platform.OS === 'ios'} behavior="padding">
         <Form>
           <Logo source={logo} />
+
           <Input
             placeholder="E-mail ou número de telefone"
             onChangeText={text => setEmail(text)}
+            keyboardType="email-address"
           />
-          <Input placeholder="Senha" onChangeText={text => setPassword(text)} />
+          <Input
+            placeholder="Senha"
+            onChangeText={text => setPassword(text)}
+            secureTextEntry
+          />
 
           <SendButton onPress={() => dispatch(signIn(email, password))}>
             <Wave>

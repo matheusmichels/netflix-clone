@@ -7,10 +7,7 @@ export default function auth(state = INITIAL_STATE, action) {
     case '@auth/SIGN_IN':
       return {
         ...state,
-        user: {
-          email: action.payload.email,
-          password: action.payload.password,
-        },
+        user: action.payload.user,
       };
     case '@auth/SIGN_OUT':
       return { ...state, user: null };

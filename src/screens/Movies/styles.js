@@ -9,3 +9,10 @@ export const Container = styled(SafeAreaView).attrs({
   background-color: ${colors.accent};
   flex: 1;
 `;
+
+export const ScrollView = styled.ScrollView.attrs({
+  keyboardShouldPersistTaps: 'always',
+  contentContainerStyle: {
+    paddingTop: 75,
+  },
+})``;

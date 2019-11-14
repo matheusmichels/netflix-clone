@@ -1,19 +1,21 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 
-import { Header, TabIcon, MainMovie } from '~/components';
+import { Header, TabIcon, MainMovie, MoviesList } from '~/components';
 
-import { Container } from './styles';
+import { Container, ScrollView } from './styles';
 
 export default function Movies() {
+  const movies = new Array(10);
+  movies.fill(true);
+
   return (
     <Container>
-      <ScrollView
-        keyboardShouldPersistTaps="always"
-        contentContainerStyle={{ flex: 1 }}
-      >
-        <Header />
+      <Header />
+      <ScrollView>
         <MainMovie />
+
+        <MoviesList title="Populares na Netflix" movies={movies} />
+        <MoviesList title="Em alta" movies={movies} />
       </ScrollView>
     </Container>
   );
