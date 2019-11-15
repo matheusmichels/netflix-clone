@@ -15,6 +15,7 @@ import {
 import { colors } from '~/styles';
 
 export default function MediaPlayer({
+  title,
   currentPosition,
   duration,
   paused,
@@ -39,7 +40,7 @@ export default function MediaPlayer({
             <Button onPress={onBack}>
               <Icon name="arrow-left" size={30} color={colors.light} />
             </Button>
-            <Text size={18}>Stranger Things</Text>
+            <Text size={18}>{title}</Text>
             <Button>
               <Icon name="information-outline" size={30} color={colors.light} />
             </Button>
@@ -82,6 +83,7 @@ export default function MediaPlayer({
 }
 
 MediaPlayer.propTypes = {
+  title: PropTypes.string,
   currentPosition: PropTypes.number,
   duration: PropTypes.number,
   paused: PropTypes.bool,

@@ -4,6 +4,8 @@ import { colors } from '~/styles';
 
 const Input = styled.TextInput.attrs({
   placeholderTextColor: colors.grey,
+  autoCapitalize: 'none',
+  autoCorrect: false,
 })`
   background-color: #333;
   font-size: 18px;

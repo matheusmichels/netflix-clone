@@ -16,12 +16,12 @@ import {
 
 import { colors } from '~/styles';
 
-import strangerThings from '~/assets/images/movies/strangerthings.jpg';
+import movies from '~/services/movies';
 
 function MainMovie({ navigation }) {
   return (
     <Container>
-      <Banner source={strangerThings} />
+      <Banner source={movies[0].image} />
 
       <Genres>
         <Text>Thriller • Action • Horror</Text>
@@ -36,7 +36,9 @@ function MainMovie({ navigation }) {
         </ActionButton>
 
         <WatchButton>
-          <WatchWrapper onPress={() => navigation.navigate('Player')}>
+          <WatchWrapper
+            onPress={() => navigation.navigate('Player', { movie: movies[0] })}
+          >
             <Icon name="play" size={25} />
             <Text color={colors.dark} size={17} bold>
               Play

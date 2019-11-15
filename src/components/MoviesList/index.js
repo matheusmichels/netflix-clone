@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 
 import { Container, Title, ScrollView, Cover } from './styles';
 
-import strangerThings from '~/assets/images/movies/strangerthings.jpg';
-
 function MoviesList({ title, movies, navigation }) {
   return (
     <Container>
@@ -15,11 +13,11 @@ function MoviesList({ title, movies, navigation }) {
       <ScrollView>
         {movies.map(movie => (
           <TouchableOpacity
-            key={String(Math.random())}
+            key={movie.id}
             activeOpacity={0.6}
-            onPress={() => navigation.navigate('Player')}
+            onPress={() => navigation.navigate('Player', { movie })}
           >
-            <Cover movie={movie} source={strangerThings} />
+            <Cover source={movie.image} />
           </TouchableOpacity>
         ))}
       </ScrollView>

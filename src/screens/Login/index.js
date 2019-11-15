@@ -33,7 +33,7 @@ export default function Login() {
   return (
     <Container>
       <KeyboardAvoidingView enabled={Platform.OS === 'ios'} behavior="padding">
-        <ScrollView>
+        <ScrollView keyboardShouldPersistTaps="always">
           <Form>
             <Logo source={logo} />
 

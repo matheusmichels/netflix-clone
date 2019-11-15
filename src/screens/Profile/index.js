@@ -16,19 +16,27 @@ import { colors } from '~/styles';
 export default function Profile() {
   const dispatch = useDispatch();
 
-  const user = useSelector(state => state.auth.user);
+  const { name, email, phone, address } = useSelector(state => state.auth.user);
 
   return (
     <Container>
       <KeyboardAvoidingView enabled={Platform.OS === 'ios'} behavior="padding">
-        <ScrollView>
+        <ScrollView keyboardShouldPersistTaps="always">
           <Form>
             <Text size={22}>Account Information</Text>
 
-            <Input placeholder="Full Name" />
-            <Input placeholder="Email" value={user && user.email} />
-            <Input placeholder="Phone Number" />
-            <Input placeholder="Address" />
+            <Input placeholder="Full Name" value={name} />
+            <Input
+              placeholder="Email"
+              value={email}
+              keyboardType="email-address"
+            />
+            <Input
+              placeholder="Phone Number"
+              value={phone}
+              keyboardType="number-pad"
+            />
+            <Input placeholder="Address" value={address} />
 
             <SaveButton>
               <SaveText color={colors.dark}>Save</SaveText>
