@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Text } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { withNavigationFocus } from 'react-navigation';
 import { useSelector } from 'react-redux';
@@ -27,19 +26,6 @@ function Home({ isFocused }) {
 
     loadUserMovies();
   }, [isFocused]);
-
-  function ContinueWatching() {
-    if (storedMovies.length) {
-      return (
-        <MoviesList
-          title={`Continue Watching for ${user.name}`}
-          movies={storedMovies}
-        />
-      );
-    }
-
-    return null;
-  }
 
   return (
     <Container>
